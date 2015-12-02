@@ -1,0 +1,11 @@
+%%
+			int k;
+\-?[0-9]+		{	k = atoi(yytext);
+				if(k%7 == 0){
+					printf("%d", k+3);
+				}
+				else{
+					printf("%d",k);
+				}
+			}
+[a-zA-Z\-0-9\_]+ ECHO;
