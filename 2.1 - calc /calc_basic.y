@@ -22,6 +22,7 @@
     int yylex(void);
 %}
 
+%left '-' '+'
 %%
 
 /**
