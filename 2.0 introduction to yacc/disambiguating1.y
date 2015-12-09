@@ -5,6 +5,8 @@
 
 */
 
+%left '+'
+%left '*'
 %token id
 
 %%
