@@ -122,11 +122,7 @@ symrec * getsymStruct(char const *identifier, symrec * tabella){
 }
 
 
-/**
-* prendo in input un array e un ref... il ref indica eg [5][6][7].. .quindi il primo valore sara 5, il next 6, il next 7...
-controllo che il tipo di array a cui faccia accesso abbia tutte queste locazioni
-nota che il datatype dell'array potrebbe essere dt_Array oppure un tipo di base
-*/
+
 int checkArrayAcces(array * a, ref * r){
 
     //controllo di non essere arrivato alla fine dell'array
@@ -182,15 +178,7 @@ int* arrayElement(array * a, ref * r){
 
 }
 
-/**
-  prende la variabile passata in ingresso e la controlla
-  controlla che vi sia coerenza tra il suo tipo e il rec * al quale si vuole accedere
-  rec * ci dice che stiamo cercando di accedere ad una determinata posizione di un array es test[3][2] = 3;
 
-  NOTA: il compose type tratta solo 2 tipi: array o non array.
-  se è un array allora mette dt_array quindi sta al typecheck andare a capire cosa/di che tipo è l'array
-
-*/
 int typeChecking(symrec * variable){
 
   if(variable->tipo->datatype != dt_array ){
@@ -318,8 +306,7 @@ int assignment(LRhand * L, LRhand * R){
 
 }
 
-/**stampa i valori della tabella dei simboli**/
-/**27/20/2015 ok, rivedere se è possibile dare una struttura più carina alla tabella stampata*/
+
 void readTable(symrec * tabella){
 
   if(tabella == NULL){
@@ -432,9 +419,9 @@ array * m_array(array * a, int n, const enum data_type datatype){
 /*
 	INPUT PARAMS:
   <ul>
-  <li>array * a</<li> un riferimento ad un array - se veniamo dalla riduzione di C -> empty allora questo valore sarà null
-  <li>size</<li> int, indica la grandezza dell'array da costruire
-  <li>default_if_a_null</<li> indica il tipo da applicare nel caso in cui l'array sia nullo.. ovvero nel caso in cui si provenga dalla riduzione di C-> empty
+  <li>array * a</li> un riferimento ad un array - se veniamo dalla riduzione di C -> empty allora questo valore sarà null
+  <li>size</li> int, indica la grandezza dell'array da costruire
+  <li>default_if_a_null</li> indica il tipo da applicare nel caso in cui l'array sia nullo.. ovvero nel caso in cui si provenga dalla riduzione di C-> empty
   </ul>
 */
 array * makeArray(array *a,int size,const enum data_type default_if_a_null){
@@ -449,19 +436,6 @@ array * makeArray(array *a,int size,const enum data_type default_if_a_null){
   return res;
 }
 
-
-
-
-/**
-  specifica il tipo di variabile che abbiamo
-  viene da chiama dal parser quando riduce C e quindi
-  termina l'analisi della produzione T -> B C..
-  in questo momento c'è a disposizione sia il valore di B che quello di C
-
-  deve tornare un type nel quale c'è il datatype che stiamo usando..
-  con il valore di base o quello dell'array, il valore di base cioè quello passato
-  viene settato sse a ==  NULL altrimenti si setta il tipo dt_array
-*/
 type * composeType(array * a, enum data_type datatype){
 	type * res = (type*)malloc(sizeof(type));
 	if(a == NULL){
