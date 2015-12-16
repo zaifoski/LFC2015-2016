@@ -1,0 +1,4 @@
+record { int ciao;} recCiao;
+{
+	
+}

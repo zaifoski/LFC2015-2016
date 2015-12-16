@@ -1,3 +1,8 @@
 lex.yy.c
 y.tab.c
 y.output
+2.2 - calc/compiler
+2.2 - calc/dot
+2.2 - calc/graph
+2.2 - calc/interpreter
+2.2 - calc/y.tab.h
